@@ -4,4 +4,4 @@
 **npm i**  
 **npm start**
 # Скриншот
-![Screenshot](https://github.com/rroland20/MarvelStarter/localhost_3000_.png)
+![Screenshot](https://github.com/rroland20/MarvelStarter/blob/main/localhost_3000_.png)
