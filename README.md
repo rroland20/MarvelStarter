@@ -3,5 +3,7 @@
 # Запуск
 **npm i**  
 **npm start**
+# GH Pages
+https://rroland20.github.io/MarvelStarter/
 # Скриншот
 ![Screenshot](https://github.com/rroland20/MarvelStarter/blob/main/localhost_3000_.png)
