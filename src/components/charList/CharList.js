@@ -17,6 +17,7 @@ const CharList = (props) => {
 
     useEffect(() => {
         onRequest(offset, true);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const onCharLoaded = (newChars) => {
@@ -36,7 +37,7 @@ const CharList = (props) => {
         getAllCharacters(offset)
             .then(onCharLoaded)
     }
-
+    
     const itemRefs = useRef([]);
 
     const focusOnItem = (id) => {
