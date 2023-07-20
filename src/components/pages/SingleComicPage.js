@@ -1,25 +1,25 @@
-import './singleComic.scss';
+import './singleComicPage.scss';
+
+import { useParams, Link } from 'react-router-dom';
 
 import { useState, useEffect} from 'react'
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
-const SingleComic = (props) => {
-    const [comics, setComics] = useState(null);
-
+const SingleComicPage = () => {
+    const {comicId} = useParams();
+    const [comics, setComics] = useState(null); 
     const {loading, error, getComics, clearError} = useMarvelService();
 
     useEffect(() => {
         updateComics();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.charId]);
+    }, [comicId]);
     
     const updateComics = () => {
-        const {comicsId} = props;
-
         clearError();
-        getComics(comicsId)
+        getComics(comicId)
             .then(onComicsLoaded)
     }
 
@@ -40,8 +40,8 @@ const SingleComic = (props) => {
     )
 }
 
-const View = (comics) => {
-    const {title, thumbnail, description, pageCount, language, prices} = comics.comics;
+const View = ({comics}) => {
+    const {title, thumbnail, description, pageCount, language, prices} = comics;
     return (
         <>
             <img src={thumbnail} alt={title} className="single-comic__img"/>
@@ -52,9 +52,11 @@ const View = (comics) => {
                 <p className="single-comic__descr">Language: {language}</p>
                 <div className="single-comic__price">{prices}$</div>
             </div>
-            <a href="/#" className="single-comic__back">Back to all</a>
+            <Link to='/comics' className="single-comic__back">Back to all</Link>
         </>
     );
 }
 
-export default SingleComic;
+export default SingleComicPage;
+
+// "homepage": "https://rroland20.github.io/MarvelStarter/",
