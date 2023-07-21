@@ -30,9 +30,10 @@ const SingleComicPage = () => {
     const errorMessage = error ? <ErrorMessage /> : null;
     const spinner = loading ? <Spinner /> : null;
     const content = !(loading || error || !comics) ? <View comics={comics} /> : null;
+    const display = errorMessage ? 'block' : 'grid';
 
     return (
-        <div className="single-comic">
+        <div style={{display: display}} className="single-comic">
             {errorMessage}
             {spinner}
             {content}
@@ -58,5 +59,3 @@ const View = ({comics}) => {
 }
 
 export default SingleComicPage;
-
-// "homepage": "https://rroland20.github.io/MarvelStarter/",
