@@ -33,7 +33,7 @@ const useMarvelService = () => {
             title: comics.title,
             description: comics.description ? `${comics.description.slice(0, 210)}...` : 'There is no description for this character',
             pageCount: comics.pageCount,
-            prices: comics.prices[0].price,
+            prices: comics.prices[0].price ? `${comics.prices[0].price}$` : "No price information",
             thumbnail: comics.thumbnail.path + '.' + comics.thumbnail.extension,
             language: comics.textObjects[0]?.language || "en-us",
             // language: comics.textObjects[0].language,

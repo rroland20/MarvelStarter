@@ -51,18 +51,7 @@ const ComicsList = (props) => {
             return (
                 <li className="comics__item"
                     tabIndex={0}
-                    key={i}
-                    // onClick={() => {
-                    //     props.onComicsSelected(comics.id);
-                    //     // focusOnItem(i);    
-                    // }}
-                    // onKeyDown={(e) => {
-                    //     if (e.key === ' ' || e.key === "Enter") {
-                    //         props.onComicsSelected(comics.id);
-                    //         // focusOnItem(i);
-                    //     }
-                    // }}
-                    >
+                    key={i}>
                     <Link to={`/comics/${comics.id}`}>
                         <img style={style} src={comics.thumbnail} alt={comics.title} className="comics__item-img"/>
                         <div className="comics__item-name">{comics.title}</div>
