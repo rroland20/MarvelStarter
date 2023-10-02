@@ -10,7 +10,7 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 
 const FindChar = () => {
     const [char, setChar] = useState(null);
-    const {loading, error, getCharacterName, clearError} = useMarvelService();
+    const {getCharacterName, clearError, process, setProcess} = useMarvelService();
 
     const onCharLoaded = (char) => {
         setChar(char);
@@ -20,10 +20,11 @@ const FindChar = () => {
         clearError();
 
         getCharacterName(name)
-            .then(onCharLoaded);
+            .then(onCharLoaded)
+            .then(() => setProcess('confirmed'))
     }
 
-    const errorMessage = error ? <div className="char__search-critical-error"><ErrorMessage /></div> : null;
+    const errorMessage = process === "error" ? <div className="char__search-critical-error"><ErrorMessage /></div> : null;
     const results = !char ? null : char.length > 0 ?
                     <div className="char__search-wrapper">
                         <div className="char__search-success">There is! Visit {char[0].name} page?</div>
@@ -52,7 +53,7 @@ const FindChar = () => {
                     <div className='char__search-wrapper'>
                         <Field id='charName' name='charName' placeholder="Enter name" type='text' />
                         <button type='submit' className='button button__main'
-                                disabled={loading}>
+                                disabled={process === 'loading'}>
                                     <div className="inner">FIND</div>
                         </button>
                     </div>
